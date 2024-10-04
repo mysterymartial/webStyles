@@ -1,0 +1,112 @@
+*{
+    .main{
+        background-color: lightblue;
+        
+    }
+    .header1{
+        border: none;
+        background-color: red;
+        color: black;
+        font-family: Arial, Helvetica, sans-serif;
+        font-style: oblique;
+    }
+    .span1{
+        color: blue;
+        cursor: pointer;
+    }
+    .span1:hover{
+        text-decoration: underline;
+        background-color: black;
+    }
+    .img1{
+        width: 300px;
+        object-fit: contain;
+        object-position: left;
+        border: solid;
+        border-width: 2px;
+        display: inline;
+    }
+    .search_bar{
+        font-size: 20px;
+        margin-left: 12px;
+        background-color: white;
+        border: solid;
+        border-radius: 12px;
+    }
+    .para1{
+        text-indent: 12px;
+        text-decoration: wavy;
+        font-size: 12px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-weight: bold;
+    }
+    .button1{
+        background-color: blue;
+        color: black;
+        padding-left: 12px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border: solid;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: opacity 1s;
+    }
+    .button1:hover{
+        cursor: pointer;
+        background-color: aliceblue;
+        color: white;
+        opacity: 12px;
+        box-shadow: 30px;
+    }
+    .para2,
+    .para3{
+        display: inline;
+    }
+    .para4{
+        margin-inline: 12px;
+    }
+    .first_name{
+        border: none;
+        margin-left: 12px;
+        font-size: 20px;
+        display: inline;
+        
+
+    }
+    .last_name{
+        border: none;
+        margin-left: 12px;
+        font-size: 20px;
+        display: inline;
+    }
+    .email{
+        border: none;
+        margin-left: 12px;
+        font-size: 20px;
+        display: block;
+        margin-top: 15px;
+        padding-right: 263px;
+    }
+    .signup{
+        border: none;
+        border-radius: 12px;
+        background-color: blue;
+        color: white;
+        display: block;
+        cursor: pointer;
+        column-rule-style: dashed;
+        margin-top: 15px;
+        padding-left: 250px;
+        padding-right: 250px;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        border-end-end-radius: 12px;
+        
+        
+    }
+    .signup:hover{
+        background-color: aliceblue;
+        color: white;
+        cursor: pointer;
+    }
+}

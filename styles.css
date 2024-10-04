@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.logo img {
+    width: 150px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.talent-pool {
+    padding: 10px 20px;
+    border: 2px solid red;
+    color: red;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background-color: #fff;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    color: #1c3a6b;
+}
+
+.hero p {
+    margin: 20px 0;
+    color: #555;
+    font-size: 1.2rem;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.cta-buttons .btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+.for-individuals {
+    background-color: red;
+}
+
+.for-businesses {
+    background-color: #555;
+}
+
+.what-we-do {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.what-we-do h2 {
+    font-size: 2rem;
+    color: #333;
+}
