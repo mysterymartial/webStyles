@@ -1,5 +1,5 @@
 {\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fmodern JetBrains Mono;}{\f2\fnil Arial;}{\f3\fnil Calibri;}}
-{\colortbl ;\red255\green255\blue255;\red235\green235\blue235;\red237\green134\blue74;\red207\green142\blue109;\red188\green190\blue196;\red78\green173\blue229;\red111\green175\blue189;\red86\green168\blue245;\red106\green171\blue115;\red125\green189\blue162;\red42\green172\blue184;\red204\green120\blue50;}
+{\colortbl ;\red255\green255\blue255;\red235\green235\blue235;\red237\green134\blue74;\red207\green142\blue109;\red188\green190\blue196;\red78\green173\blue229;\red111\green175\blue189;\red86\green168\blue245;\red106\green171\blue115;\red125\green189\blue162;\red42\green172\blue184;\red204\green120\blue50;\red255\green207\blue64;\red237\green148\blue255;\red84\green179\blue62;}
 {\*\generator Riched20 10.0.22621}\viewkind4\uc1 
 \pard\sa200\sl276\slmult1\f0\fs22\lang9 ChatGPT 4o mini\par
 \par
@@ -903,13 +903,1177 @@ public class TvTest \{\par
 \}\f1\par
 \line\line\par
 \f0\par
+class Linked_List:\par
+    def __init__(self):\par
+        self.head = None\par
 \par
+    def insert_at_end(self, value):\par
+        new_node = Node(value)\par
+        if self.head is None:\par
+            self.head = new_node\par
+        else:\par
+            current = self.head\par
+            while current.next:\par
+                current = current.next\par
+            current.next = new_node\par
 \par
-\f3\lang9\par
+    def insert_at_start(self, value):\par
+        new_node = Node(value)\par
+        new_node.next = self.head\par
+        self.head = new_node\par
 \par
+    def delete_node(self, value):\par
+        current = self.head\par
+        previous = None\par
 \par
-\f1\par
+        # Case: the list is empty\par
+        if current is None:\par
+            return\par
+\par
+        # Case: the node to delete is the head\par
+        if current.data == value:\par
+            self.head = current.next\par
+            current = None\par
+            return\par
+\par
+        # Traverse the list to find the node to delete\par
+        while current is not None:\par
+            if current.data == value:\par
+                break\par
+            previous = current\par
+            current = current.next\par
+\par
+        # If the node was not found\par
+        if current is None:\par
+            return\par
+\par
+        # Unlink the node from the list\par
+        previous.next = current.next\par
+        current = None\par
+Additional Functionality\par
+Display the linked list: You might want a method to traverse and print the values in the list.\par
+python\par
+Copy code\par
+    def display(self):\par
+        current = self.head\par
+        if current is None:\par
+            print("The list is empty.")\par
+            return\par
+        while current:\par
+            print(current.data, end=" -> ")\par
+            current = current.next\par
+        print("None")\par
+Check if the list is empty:\par
+python\par
+Copy code\par
+    def is_empty(self):\par
+        return self.head is None\par
+Find the length of the list:\par
+python\par
+Copy code\par
+    def length(self):\par
+        current = self.head\par
+        count = 0\par
+        while current:\par
+            count += 1\par
+            current = current.next\par
+        return count\par
+Updating the Unit Tests\par
+Here are some updated tests to include these functionalities:\par
+\par
+python\par
+Copy code\par
+class TestLinkedList(TestCase):\par
+    def setUp(self):\par
+        self.linked_list = Linked_List()\par
+\par
+    def test_insert_at_the_end(self):\par
+        self.linked_list.insert_at_end(5)\par
+        self.linked_list.insert_at_end(6)\par
+        self.linked_list.insert_at_end(7)\par
+        self.assertEqual(self.linked_list.head.data, 5)\par
+        self.assertEqual(self.linked_list.head.next.data, 6)\par
+        self.assertEqual(self.linked_list.head.next.next.data, 7)\par
+\par
+    def test_insert_at_the_beginning(self):\par
+        self.linked_list.insert_at_start(20)\par
+        self.linked_list.insert_at_start(30)\par
+        self.assertEqual(self.linked_list.head.data, 30)\par
+        self.assertEqual(self.linked_list.head.next.data, 20)\par
+\par
+    def test_delete_node(self):\par
+        self.linked_list.insert_at_end(5)\par
+        self.linked_list.insert_at_end(6)\par
+        self.linked_list.insert_at_end(7)\par
+        self.linked_list.delete_node(6)\par
+        self.assertEqual(self.linked_list.head.data, 5)\par
+        self.assertEqual(self.linked_list.head.next.data, 7)\par
+\par
+        self.linked_list.delete_node(5)\par
+        self.assertEqual(self.linked_list.head.data, 7)\par
+\par
+        self.linked_list.delete_node(7)\par
+        self.assertIsNone(self.linked_list.head)\par
+\par
+    def test_is_empty(self):\par
+        self.assertTrue(self.linked_list.is_empty())\par
+        self.linked_list.insert_at_end(10)\par
+        self.assertFalse(self.linked_list.is_empty())\par
+\par
+    def test_length(self):\par
+        self.assertEqual(self.linked_list.length(), 0)\par
+        self.linked_list.insert_at_end(1)\par
+        self.assertEqual(self.linked_list.length(), 1)\par
+        self.linked_list.insert_at_end(2)\par
+        self.assertEqual(self.linked_list.length(), 2)\par
+\par
+    def test_display(self):\par
+        self.linked_list.insert_at_end(1)\par
+        self.linked_list.insert_at_end(2)\par
+        self.linked_list.insert_at_end(3)\par
+        self.linked_list.display()  # Manually check if the output is correct: 1 -> 2 -> 3\par
+\cf3\f1 public \cf1 String \cf13 display\cf2 () \{\line     \cf1 StringBuilder result \cf2 = \cf3 new \cf2 StringBuilder()\cf3\b ;\line     \cf1\b0 Node current \cf2 = \cf14 head\cf3\b ;\line     \b0 while \cf2 (\cf1 current \cf2 != \cf3 null\cf2 ) \{\line         \cf1 result\cf2 .append(\cf1 current\cf2 .\cf14 data\cf2 ).append(\cf15 " -> "\cf2 )\cf3\b ;\line         \cf1\b0 current \cf2 = \cf1 current\cf2 .\cf14 next\cf3\b ;\line\line     \cf2\b0\}\line     \cf1 result\cf2 .append(\cf15 "NULL"\cf2 )\cf3\b ;\line     \b0 return \cf1 result\cf2 .toString()\cf3\b ;\par
+\f0 map java\par
+import dataStructure.CustomMap;\par
+import org.junit.jupiter.api.BeforeEach;\par
+import org.junit.jupiter.api.Test;\par
+\par
+import static org.junit.jupiter.api.Assertions.*;\par
+\par
+public class CustomMapTest \{\par
+    private CustomMap<String, Integer> map;\par
+\par
+    @BeforeEach\par
+    public void setUp() \{\par
+        map = new CustomMap<>();\par
+    \}\par
+\par
+    @Test\par
+    public void testPutAndGet() \{\par
+        map.put("one", 1);\par
+        map.put("two", 2);\par
+        assertEquals(1, map.get("one"));\par
+        assertEquals(2, map.get("two"));\par
+    \}\par
+\par
+    @Test\par
+    public void testUpdateValue() \{\par
+        map.put("one", 1);\par
+        map.put("one", 10); // Update value for key "one"\par
+        assertEquals(10, map.get("one"));\par
+    \}\par
+\par
+    @Test\par
+    public void testRemove() \{\par
+        map.put("one", 1);\par
+        map.put("two", 2);\par
+        map.remove("one"); // Remove key "one"\par
+        assertNull(map.get("one")); // Key "one" should no longer exist\par
+        assertEquals(2, map.get("two")); // Key "two" should still exist\par
+    \}\par
+\par
+    @Test\par
+    public void testContainsKey() \{\par
+        map.put("one", 1);\par
+        assertTrue(map.containsKey("one"));\par
+        assertFalse(map.containsKey("two")); // Key "two" doesn't exist yet\par
+    \}\par
+\par
+    @Test\par
+    public void testSize() \{\par
+        assertEquals(0, map.size()); // Map should initially be empty\par
+        map.put("one", 1);\par
+        map.put("two", 2);\par
+        assertEquals(2, map.size()); // Map should have 2 entries\par
+    \}\par
+\par
+    @Test\par
+    public void testClear() \{\par
+        map.put("one", 1);\par
+        map.put("two", 2);\par
+        map.clear(); // Clear the map\par
+        assertEquals(0, map.size()); // Map should be empty\par
+        assertNull(map.get("one")); // Keys should no longer exist\par
+    \}\par
+\}\par
+Explanation of Test Cases\par
+testPutAndGet:\par
+\par
+Ensures that keys and values are stored and retrieved correctly.\par
+testUpdateValue:\par
+\par
+Tests if updating a value for an existing key works.\par
+testRemove:\par
+\par
+Verifies that removing a key-value pair works and the key no longer exists.\par
+testContainsKey:\par
+\par
+Checks if containsKey works correctly.\par
+testSize:\par
+\par
+Verifies that the size of the map updates correctly as entries are added.\par
+testClear:\par
+\par
+Ensures that the map is empty after calling clear.\par
+Example Usage\par
+java\par
+Copy code\par
+public class Main \{\par
+    public static void main(String[] args) \{\par
+        CustomMap<String, Integer> map = new CustomMap<>();\par
+        map.put("apple", 10);\par
+        map.put("banana", 20);\par
+\par
+        System.out.println("Value for 'apple': " + map.get("apple")); // Output: 10\par
+        System.out.println("Contains 'banana': " + map.containsKey("banana")); // Output: true\par
+\par
+        map.remove("apple");\par
+        System.out.println("Contains 'apple' after removal: " + map.containsKey("apple")); // Output: false\par
+    \}\par
+\}\par
+map python\par
+class Entry:\par
+    """Helper class to store key-value pairs."""\par
+    def __init__(self, key, value):\par
+        self.key = key\par
+        self.value = value\par
+        self.next = None  # For handling collisions with linked lists\par
+\par
+class CustomMap:\par
+    """A custom implementation of a hash map using separate chaining."""\par
+    INITIAL_CAPACITY = 16\par
+\par
+    def __init__(self):\par
+        self.buckets = [None] * self.INITIAL_CAPACITY  # Array of linked lists\par
+        self.size = 0\par
+\par
+    def _get_bucket_index(self, key):\par
+        """Calculate the bucket index using the hash of the key."""\par
+        return hash(key) % len(self.buckets)\par
+\par
+    def put(self, key, value):\par
+        """Insert or update a key-value pair."""\par
+        index = self._get_bucket_index(key)\par
+        head = self.buckets[index]\par
+\par
+        # Check if the key already exists, and update the value\par
+        while head:\par
+            if head.key == key:\par
+                head.value = value\par
+                return\par
+            head = head.next\par
+\par
+        # If key doesn't exist, insert a new entry at the beginning of the list\par
+        new_entry = Entry(key, value)\par
+        new_entry.next = self.buckets[index]\par
+        self.buckets[index] = new_entry\par
+        self.size += 1\par
+\par
+    def get(self, key):\par
+        """Retrieve the value associated with the given key."""\par
+        index = self._get_bucket_index(key)\par
+        head = self.buckets[index]\par
+\par
+        while head:\par
+            if head.key == key:\par
+                return head.value\par
+            head = head.next\par
+        return None  # Key not found\par
+\par
+    def remove(self, key):\par
+        """Remove a key-value pair by key."""\par
+        index = self._get_bucket_index(key)\par
+        head = self.buckets[index]\par
+        prev = None\par
+\par
+        while head:\par
+            if head.key == key:\par
+                if prev is None:\par
+                    self.buckets[index] = head.next  # Remove head entry\par
+                else:\par
+                    prev.next = head.next  # Bypass the current entry\par
+                self.size -= 1\par
+                return\par
+            prev = head\par
+            head = head.next\par
+\par
+    def contains_key(self, key):\par
+        """Check if a key exists in the map."""\par
+        return self.get(key) is not None\par
+\par
+    def clear(self):\par
+        """Remove all key-value pairs from the map."""\par
+        self.buckets = [None] * len(self.buckets)\par
+        self.size = 0\par
+\par
+    def get_size(self):\par
+        """Get the number of key-value pairs in the map."""\par
+        return self.size\par
+Unit Tests for CustomMap\par
+test_custom_map.py\par
+python\par
+Copy code\par
+import unittest\par
+from custom_map import CustomMap\par
+\par
+class TestCustomMap(unittest.TestCase):\par
+    def setUp(self):\par
+        self.map = CustomMap()\par
+\par
+    def test_put_and_get(self):\par
+        self.map.put("one", 1)\par
+        self.map.put("two", 2)\par
+        self.assertEqual(self.map.get("one"), 1)\par
+        self.assertEqual(self.map.get("two"), 2)\par
+\par
+    def test_update_value(self):\par
+        self.map.put("one", 1)\par
+        self.map.put("one", 10)  # Update value for the same key\par
+        self.assertEqual(self.map.get("one"), 10)\par
+\par
+    def test_remove(self):\par
+        self.map.put("one", 1)\par
+        self.map.put("two", 2)\par
+        self.map.remove("one")  # Remove the key "one"\par
+        self.assertIsNone(self.map.get("one"))  # "one" should no longer exist\par
+        self.assertEqual(self.map.get("two"), 2)  # "two" should still exist\par
+\par
+    def test_contains_key(self):\par
+        self.map.put("one", 1)\par
+        self.assertTrue(self.map.contains_key("one"))\par
+        self.assertFalse(self.map.contains_key("two"))  # Key "two" doesn't exist\par
+\par
+    def test_size(self):\par
+        self.assertEqual(self.map.get_size(), 0)  # Initially empty\par
+        self.map.put("one", 1)\par
+        self.map.put("two", 2)\par
+        self.assertEqual(self.map.get_size(), 2)  # Two entries\par
+\par
+    def test_clear(self):\par
+        self.map.put("one", 1)\par
+        self.map.put("two", 2)\par
+        self.map.clear()  # Clear the map\par
+        self.assertEqual(self.map.get_size(), 0)  # Map should be empty\par
+        self.assertIsNone(self.map.get("one"))  # Keys should no longer exist\par
+\par
+if __name__ == '__main__':\par
+    unittest.main()\par
+Explanation of the Code\par
+OOP Design:\f1\line\cf2\b0\}\par
+\cf5\f0\par
 
-\pard\sa200\sl276\slmult1\cf0\f0\fs22\par
+\pard\sa200\sl276\slmult1 class Entry:\par
+    """Stores a single key-value pair."""\par
+    def __init__(self, key, value):\par
+        self.key = key\par
+        self.value = value\par
+        self.next = None  # For linked list in case of collision\par
+\par
+class CustomMap:\par
+    """Custom map implementation with dynamic resizing."""\par
+    def __init__(self):\par
+        self.capacity = 4  # Start with a small capacity (for simplicity)\par
+        self.size = 0  # Track the number of key-value pairs\par
+        self.buckets = [None] * self.capacity  # Array of linked lists\par
+\par
+    def _get_index(self, key):\par
+        """Calculate the index for a key."""\par
+        return hash(key) % self.capacity\par
+\par
+    def put(self, key, value):\par
+        """Insert or update a key-value pair."""\par
+        index = self._get_index(key)\par
+        head = self.buckets[index]\par
+\par
+        # If key exists, update the value\par
+        while head:\par
+            if head.key == key:\par
+                head.value = value\par
+                return\par
+            head = head.next\par
+\par
+        # Otherwise, insert new entry at the front of the list\par
+        new_entry = Entry(key, value)\par
+        new_entry.next = self.buckets[index]\par
+        self.buckets[index] = new_entry\par
+        self.size += 1\par
+\par
+        # Check if resizing is needed\par
+        if self.size / self.capacity > 0.75:\par
+            self._resize()\par
+\par
+    def get(self, key):\par
+        """Retrieve the value for a key."""\par
+        index = self._get_index(key)\par
+        head = self.buckets[index]\par
+\par
+        # Search through the linked list at this index\par
+        while head:\par
+            if head.key == key:\par
+                return head.value\par
+            head = head.next\par
+        return None  # Key not found\par
+\par
+    def _resize(self):\par
+        """Double the size of the buckets and rehash all entries."""\par
+        old_buckets = self.buckets\par
+        self.capacity *= 2  # Double the capacity\par
+        self.buckets = [None] * self.capacity  # New empty buckets\par
+        self.size = 0  # Reset size to 0; will be recalculated in re-insertion\par
+\par
+        # Re-insert all old entries into the new buckets\par
+        for head in old_buckets:\par
+            while head:\par
+                self.put(head.key, head.value)\par
+                head = head.next\par
+\par
+    def remove(self, key):\par
+        """Remove a key-value pair by key."""\par
+        index = self._get_index(key)\par
+        head = self.buckets[index]\par
+        prev = None\par
+\par
+        # Search for the key in the linked list\par
+        while head:\par
+            if head.key == key:\par
+                if prev:\par
+                    prev.next = head.next  # Remove entry in the middle\par
+                else:\par
+                    self.buckets[index] = head.next  # Remove head entry\par
+                self.size -= 1\par
+                return\par
+            prev = head\par
+            head = head.next\par
+\par
+    def contains_key(self, key):\par
+        """Check if the map contains a key."""\par
+        return self.get(key) is not None\par
+\par
+    def get_size(self):\par
+        """Return the number of key-value pairs."""\par
+        return self.size\par
+\par
+    def clear(self):\par
+        """Clear the entire map."""\par
+        self.buckets = [None] * self.capacity\par
+        self.size = 0\par
+Explanation of Key Methods\par
+put(key, value):\par
+\par
+If the key already exists, update the value.\par
+If it doesn't exist, add a new entry to the front of the linked list at the calculated index.\par
+If the load factor exceeds 0.75, the map doubles in size by calling _resize().\par
+get(key):\par
+\par
+Calculate the index for the key.\par
+Search for the key in the linked list at that index.\par
+Return the value if found; otherwise, return None.\par
+_resize():\par
+\par
+Doubles the capacity and rehashes all existing entries.\par
+This ensures the map can grow dynamically without performance issues.\par
+remove(key):\par
+\par
+Search for the key in the linked list.\par
+If found, remove it and adjust the linked list pointers accordingly.\par
+contains_key(key):\par
+\par
+Checks if a given key exists by calling get(key).\par
+clear():\par
+\par
+Resets the map to an empty state by clearing all buckets.\par
+Simplified Test Cases\par
+Here\rquote s a simple test suite to verify the map\rquote s functionality.\par
+\par
+test_custom_map.py\par
+python\par
+Copy code\par
+import unittest\par
+from custom_map import CustomMap\par
+\par
+class TestCustomMap(unittest.TestCase):\par
+    def setUp(self):\par
+        self.map = CustomMap()\par
+\par
+    def test_put_and_get(self):\par
+        self.map.put("a", 1)\par
+        self.assertEqual(self.map.get("a"), 1)\par
+\par
+    def test_update_value(self):\par
+        self.map.put("a", 1)\par
+        self.map.put("a", 2)\par
+        self.assertEqual(self.map.get("a"), 2)\par
+\par
+    def test_remove(self):\par
+        self.map.put("a", 1)\par
+        self.map.remove("a")\par
+        self.assertIsNone(self.map.get("a"))\par
+\par
+    def test_contains_key(self):\par
+        self.map.put("a", 1)\par
+        self.assertTrue(self.map.contains_key("a"))\par
+        self.assertFalse(self.map.contains_key("b"))\par
+\par
+    def test_resize(self):\par
+        for i in range(10):\par
+            self.map.put(f"key\{i\}", i)\par
+        self.assertEqual(self.map.get_size(), 10)\par
+\par
+    def test_clear(self):\par
+        self.map.put("a", 1)\par
+        self.map.clear()\par
+        self.assertEqual(self.map.get_size(), 0)\par
+\par
+if __name__ == '__main__':\par
+    unittest.main()\par
+import static org.junit.jupiter.api.Assertions.*;\par
+import org.junit.jupiter.api.BeforeEach;\par
+import org.junit.jupiter.api.Test;\par
+\par
+public class MapTest \{\par
+    private Map<String, Integer> map;\par
+\par
+    @BeforeEach\par
+    public void setUp() \{\par
+        map = new Map<>();\par
+    \}\par
+\par
+    @Test\par
+    public void testPutKeyAndAddValue() \{\par
+        map.put("key1", 1);\par
+        map.put("key2", 2);\par
+        assertEquals(1, map.get("key1"));\par
+        assertEquals(2, map.get("key2"));\par
+    \}\par
+\par
+    @Test\par
+    public void testUpdateValue() \{\par
+        map.put("key1", 1);\par
+        map.put("key2", 2);\par
+        map.update("key2", 3);\par
+        assertEquals(3, map.get("key2"));\par
+    \}\par
+\par
+    @Test\par
+    public void testRemoveKey() \{\par
+        map.put("key1", 1);\par
+        map.remove("key1");\par
+        assertNull(map.get("key1"));\par
+    \}\par
+\par
+    @Test\par
+    public void testClearMap() \{\par
+        map.put("key1", 1);\par
+        map.put("key2", 2);\par
+        map.clear();\par
+        assertEquals(0, map.size());\par
+    \}\par
+\par
+    @Test\par
+    public void testSize() \{\par
+        map.put("key1", 1);\par
+        map.put("key2", 2);\par
+        assertEquals(2, map.size());\par
+    \}\par
+\par
+    @Test\par
+    public void testPutExistingKeyThrowsException() \{\par
+        map.put("key1", 1);\par
+        assertThrows(IllegalArgumentException.class, () -> map.put("key1", 2));\par
+    \}\par
+\par
+    @Test\par
+    public void testUpdateNonExistingKeyThrowsException() \{\par
+        assertThrows(IllegalArgumentException.class, () -> map.update("key1", 3));\par
+    \}\par
+\par
+    @Test\par
+    public void testRemoveNonExistingKeyThrowsException() \{\par
+        assertThrows(IllegalArgumentException.class, () -> map.remove("key1"));\par
+    \}\par
+\}\par
+mport unittest\par
+\par
+class TestSet(unittest.TestCase):\par
+    def setUp(self):\par
+        self.set = Set()\par
+\par
+    def test_add_element(self):\par
+        self.set.add("element1")\par
+        self.assertTrue(self.set.contains("element1"))\par
+\par
+    def test_add_duplicate_element_raises_exception(self):\par
+        self.set.add("element1")\par
+        with self.assertRaises(ValueError):\par
+            self.set.add("element1")\par
+\par
+    def test_remove_element(self):\par
+        self.set.add("element1")\par
+        self.set.remove("element1")\par
+        self.assertFalse(self.set.contains("element1"))\par
+\par
+    def test_remove_non_existing_element_raises_exception(self):\par
+        with self.assertRaises(ValueError):\par
+            self.set.remove("element1")\par
+\par
+    def test_is_empty(self):\par
+        self.assertTrue(self.set.is_empty())  # Initially, the set should be empty\par
+        self.set.add("element1")\par
+        self.assertFalse(self.set.is_empty())  # After adding an element, it should not be empty\par
+        self.set.remove("element1")\par
+        self.assertTrue(self.set.is_empty())  # After removing the element, it should be empty again\par
+\par
+    def test_clear(self):\par
+        self.set.add("element1")\par
+        self.set.add("element2")\par
+        self.set.clear()\par
+        self.assertTrue(self.set.is_empty())\par
+\par
+    def test_size(self):\par
+        self.set.add("element1")\par
+        self.set.add("element2")\par
+        self.assertEqual(self.set.size(), 2)\par
+\par
+if __name__ == '__main__':\par
+    unittest.main()\par
+\par
+import static org.junit.jupiter.api.Assertions.*;\par
+import org.junit.jupiter.api.BeforeEach;\par
+import org.junit.jupiter.api.Test;\par
+\par
+public class SetTest \{\par
+    private Set<String> set;\par
+\par
+    @BeforeEach\par
+    public void setUp() \{\par
+        set = new Set<>();\par
+    \}\par
+\par
+    @Test\par
+    public void testAddElement() \{\par
+        set.add("element1");\par
+        assertTrue(set.contains("element1"));\par
+    \}\par
+\par
+    @Test\par
+    public void testAddDuplicateElementThrowsException() \{\par
+        set.add("element1");\par
+        assertThrows(IllegalArgumentException.class, () -> set.add("element1"));\par
+    \}\par
+\par
+    @Test\par
+    public void testRemoveElement() \{\par
+        set.add("element1");\par
+        set.remove("element1");\par
+        assertFalse(set.contains("element1"));\par
+    \}\par
+\par
+    @Test\par
+    public void testRemoveNonExistingElementThrowsException() \{\par
+        assertThrows(IllegalArgumentException.class, () -> set.remove("element1"));\par
+    \}\par
+\par
+    @Test\par
+    public void testIsEmpty() \{\par
+        assertTrue(set.isEmpty()); // Initially, the set should be empty\par
+        set.add("element1");\par
+        assertFalse(set.isEmpty()); // After adding an element, it should not be empty\par
+        set.remove("element1");\par
+        assertTrue(set.isEmpty()); // After removing the element, it should be empty again\par
+    \}\par
+\par
+    @Test\par
+    public void testClear() \{\par
+        set.add("element1");\par
+        set.add("element2");\par
+        set.clear();\par
+        assertTrue(set.isEmpty());\par
+    \}\par
+\par
+    @Test\par
+    public void testSize() \{\par
+        set.add("element1");\par
+        set.add("element2");\par
+        assertEquals(2, set.size());\par
+    \}\par
+\}\par
+lass Stack:\par
+    def __init__(self, capacity=4):\par
+        self.capacity = capacity\par
+        self.size = 0\par
+        self.elements = [None] * capacity\par
+\par
+    def is_empty(self):\par
+        """Check if the stack is empty."""\par
+        return self.size == 0\par
+\par
+    def get_size(self):\par
+        """Return the size of the stack."""\par
+        return self.size\par
+\par
+    def push(self, element):\par
+        """Add an element to the top of the stack."""\par
+        if self.size == self.capacity:\par
+            self._increase_capacity()\par
+        self.elements[self.size] = element\par
+        self.size += 1\par
+\par
+    def pop(self):\par
+        """Remove and return the top element of the stack."""\par
+        if self.is_empty():\par
+            raise IndexError("Pop from empty stack")\par
+        self.size -= 1\par
+        element = self.elements[self.size]\par
+        self.elements[self.size] = None  # Avoid memory leaks\par
+        return element\par
+\par
+    def peek(self):\par
+        """Return the top element without removing it."""\par
+        if self.is_empty():\par
+            raise IndexError("Peek from empty stack")\par
+        return self.elements[self.size - 1]\par
+\par
+    def _increase_capacity(self):\par
+        """Double the stack's capacity."""\par
+        self.capacity *= 2\par
+        new_elements = [None] * self.capacity\par
+        new_elements[:self.size] = self.elements\par
+        self.elements = new_elements\par
+\par
+    def get_capacity(self):\par
+        """Return the current capacity of the stack."""\par
+        return self.capacity\par
+Unit Tests: test_stack.py\par
+python\par
+Copy code\par
+import unittest\par
+from stack import Stack\par
+\par
+class TestStack(unittest.TestCase):\par
+    def setUp(self):\par
+        self.stack = Stack(3)  # Initialize with capacity of 3\par
+\par
+    def test_stack_is_empty(self):\par
+        self.assertTrue(self.stack.is_empty())\par
+\par
+    def test_stack_size(self):\par
+        self.assertEqual(self.stack.get_size(), 0)\par
+\par
+    def test_push_increases_size(self):\par
+        initial_size = self.stack.get_size()\par
+        self.stack.push(1)\par
+        self.assertEqual(self.stack.get_size(), initial_size + 1)\par
+\par
+    def test_pop_decreases_size_and_returns_value(self):\par
+        self.stack.push(1)\par
+        self.stack.push(2)\par
+        popped_value = self.stack.pop()\par
+        self.assertEqual(popped_value, 2)  # LIFO: last in, first out\par
+        self.assertEqual(self.stack.pop(), 1)\par
+\par
+    def test_pop_on_empty_stack_raises_exception(self):\par
+        with self.assertRaises(IndexError):\par
+            self.stack.pop()\par
+\par
+    def test_peek_returns_top_element_without_removing(self):\par
+        self.stack.push(1)\par
+        self.stack.push(2)\par
+        self.assertEqual(self.stack.peek(), 2)\par
+\par
+    def test_capacity_increases_when_full(self):\par
+        small_stack = Stack(1)\par
+        small_stack.push(1)\par
+        small_stack.push(2)  # This push triggers capacity increase\par
+        self.assertEqual(small_stack.peek(), 2)\par
+        self.assertTrue(small_stack.get_capacity() > 1)\par
+\par
+if __name__ == "__main__":\par
+    unittest.main()\par
+package stack\par
+\par
+go\par
+Copy code\par
+package stack\par
+\par
+import (\par
+\tab "errors"\par
+)\par
+\par
+// Stack represents a generic stack with dynamic capacity.\par
+type Stack[T any] struct \{\par
+\tab size     int\par
+\tab capacity int\par
+\tab elements []T\par
+\}\par
+\par
+// NewStack creates a new stack with the given capacity.\par
+func NewStack[T any](capacity int) *Stack[T] \{\par
+\tab return &Stack[T]\{\par
+\tab\tab capacity: capacity,\par
+\tab\tab elements: make([]T, capacity),\par
+\tab\}\par
+\}\par
+\par
+// IsEmpty checks if the stack is empty.\par
+func (s *Stack[T]) IsEmpty() bool \{\par
+\tab return s.size == 0\par
+\}\par
+\par
+// Size returns the number of elements in the stack.\par
+func (s *Stack[T]) Size() int \{\par
+\tab return s.size\par
+\}\par
+\par
+// Push adds an element to the top of the stack, increasing capacity if needed.\par
+func (s *Stack[T]) Push(element T) \{\par
+\tab if s.size == s.capacity \{\par
+\tab\tab s.increaseCapacity()\par
+\tab\}\par
+\tab s.elements[s.size] = element\par
+\tab s.size++\par
+\}\par
+\par
+// increaseCapacity doubles the stack's capacity.\par
+func (s *Stack[T]) increaseCapacity() \{\par
+\tab s.capacity *= 2\par
+\tab newElements := make([]T, s.capacity)\par
+\tab copy(newElements, s.elements)\par
+\tab s.elements = newElements\par
+\}\par
+\par
+// Pop removes and returns the top element from the stack.\par
+func (s *Stack[T]) Pop() (T, error) \{\par
+\tab var zeroVal T // Zero value to return in case of error.\par
+\tab if s.IsEmpty() \{\par
+\tab\tab return zeroVal, errors.New("stack is empty")\par
+\tab\}\par
+\tab s.size--\par
+\tab element := s.elements[s.size]\par
+\tab s.elements[s.size] = zeroVal // Clear the slot.\par
+\tab return element, nil\par
+\}\par
+\par
+// Peek returns the top element without removing it.\par
+func (s *Stack[T]) Peek() (T, error) \{\par
+\tab var zeroVal T\par
+\tab if s.IsEmpty() \{\par
+\tab\tab return zeroVal, errors.New("stack is empty")\par
+\tab\}\par
+\tab return s.elements[s.size-1], nil\par
+\}\par
+\par
+// GetCapacity returns the current capacity of the stack.\par
+func (s *Stack[T]) GetCapacity() int \{\par
+\tab return s.capacity\par
+\}\par
+Unit Tests (stack_test.go)\par
+Below is the Go version of the Java unit tests using the testing package.\par
+\par
+go\par
+Copy code\par
+package stack\par
+\par
+import (\par
+\tab "testing"\par
+)\par
+\par
+var stack *Stack[int]\par
+\par
+func setup() \{\par
+\tab stack = NewStack \par
+\}\par
+\par
+func TestStackIsEmpty(t *testing.T) \{\par
+\tab setup()\par
+\tab if !stack.IsEmpty() \{\par
+\tab\tab t.Error("Expected stack to be empty")\par
+\tab\}\par
+\}\par
+\par
+func TestStackSize(t *testing.T) \{\par
+\tab setup()\par
+\tab if stack.Size() != 0 \{\par
+\tab\tab t.Errorf("Expected size 0, got %d", stack.Size())\par
+\tab\}\par
+\}\par
+\par
+func TestPushReflectsInSize(t *testing.T) \{\par
+\tab setup()\par
+\tab initialSize := stack.Size()\par
+\tab stack.Push(1)\par
+\tab if stack.Size() != initialSize+1 \{\par
+\tab\tab t.Errorf("Expected size %d, got %d", initialSize+1, stack.Size())\par
+\tab\}\par
+\}\par
+\par
+func TestPopReflectsInSize(t *testing.T) \{\par
+\tab setup()\par
+\tab stack.Push(1)\par
+\tab stack.Push(2)\par
+\tab stack.Pop()\par
+\par
+\tab val, err := stack.Pop()\par
+\tab if err != nil \{\par
+\tab\tab t.Error("Unexpected error while popping")\par
+\tab\}\par
+\tab if val != 1 \{\par
+\tab\tab t.Errorf("Expected 1, got %d", val)\par
+\tab\}\par
+\}\par
+\par
+func TestPopFromEmptyStack(t *testing.T) \{\par
+\tab setup()\par
+\tab _, err := stack.Pop()\par
+\tab if err == nil \{\par
+\tab\tab t.Error("Expected an error when popping from an empty stack")\par
+\tab\}\par
+\}\par
+\par
+func TestPeekFunctionality(t *testing.T) \{\par
+\tab setup()\par
+\tab stack.Push(1)\par
+\tab stack.Push(2)\par
+\tab stack.Push(3)\par
+\par
+\tab val, err := stack.Peek()\par
+\tab if err != nil \{\par
+\tab\tab t.Error("Unexpected error during peek")\par
+\tab\}\par
+\tab if val != 3 \{\par
+\tab\tab t.Errorf("Expected 3, got %d", val)\par
+\tab\}\par
+\}\par
+\par
+func TestCapacityIncrease(t *testing.T) \{\par
+\tab smallStack := NewStack \par
+\tab smallStack.Push(1)\par
+\tab smallStack.Push(2)\par
+\tab smallStack.Push(3)\par
+\par
+\tab val, err := smallStack.Peek()\par
+\tab if err != nil \{\par
+\tab\tab t.Error("Unexpected error during peek")\par
+\tab\}\par
+\tab if val != 3 \{\par
+\tab\tab t.Errorf("Expected 3, got %d", val)\par
+\tab\}\par
+\tab if smallStack.GetCapacity() <= 2 \{\par
+\tab\tab t.Error("Expected capacity to increase beyond 2")\par
+\tab\}\par
+\}\f3\}\par
+go\par
+Copy code\par
+package main\par
+\par
+import "fmt"\par
+\par
+// Strategy interface for flying behavior\par
+type FlyBehavior interface \{\par
+\tab Fly()\par
+\}\par
+\par
+// Concrete implementation of FlyBehavior\par
+type CanFly struct\{\}\par
+\par
+func (c CanFly) Fly() \{\par
+\tab fmt.Println("This animal is flying!")\par
+\}\par
+\par
+// Another behavior: Non-flyable (used for non-flying animals)\par
+type CannotFly struct\{\}\par
+\par
+func (c CannotFly) Fly() \{\par
+\tab fmt.Println("This animal cannot fly.")\par
+\}\par
+\par
+// Base struct (superclass)\par
+type Animal struct \{\par
+\tab Name       string\par
+\tab FlyBehavior FlyBehavior // Strategy interface as a field\par
+\}\par
+\par
+// Constructor for Animal\par
+func NewAnimal(name string, flyBehavior FlyBehavior) *Animal \{\par
+\tab return &Animal\{Name: name, FlyBehavior: flyBehavior\}\par
+\}\par
+\par
+// Subclass constructors with appropriate behavior strategies\par
+func NewBird(name string) *Animal \{\par
+\tab return NewAnimal(name, CanFly\{\})\par
+\}\par
+\par
+func NewBat(name string) *Animal \{\par
+\tab return NewAnimal(name, CanFly\{\})\par
+\}\par
+\par
+func NewDog(name string) *Animal \{\par
+\tab return NewAnimal(name, CannotFly\{\})\par
+\}\par
+\par
+func NewCat(name string) *Animal \{\par
+\tab return NewAnimal(name, CannotFly\{\})\par
+\}\par
+\par
+func main() \{\par
+\tab bird := NewBird("Parrot")\par
+\tab bat := NewBat("Bat")\par
+\tab dog := NewDog("Dog")\par
+\tab cat := NewCat("Cat")\par
+\par
+\tab // Bird and Bat can fly\par
+\tab bird.FlyBehavior.Fly()\par
+\tab bat.FlyBehavior.Fly()\par
+\par
+\tab // Dog and Cat cannot fly\par
+\tab dog.FlyBehavior.Fly()\par
+\tab cat.FlyBehavior.Fly()\par
+\}\par
+Explanation of the Go Implementation\par
+FlyBehavior is the strategy interface that defines the Fly() method.\par
+CanFly and CannotFly are concrete implementations of the strategy interface.\par
+Each Animal contains a FlyBehavior field, which allows you to assign different flying behaviors to different animals.\par
+The subclasses like Bird and Bat are assigned the CanFly behavior, while Dog and Cat are assigned the CannotFly behavior.\par
+This design avoids code duplication and makes it easy to switch or modify behaviors dynamically.\par
+\par
+Example: Using the Strategy Pattern in Java\par
+Similarly, you can apply the Strategy Pattern in Java.\par
+\par
+Java Code with Strategy Pattern\par
+java\par
+Copy code\par
+// Strategy interface for flying behavior\par
+interface FlyBehavior \{\par
+    void fly();\par
+\}\par
+\par
+// Concrete implementation: Flying animals\par
+class CanFly implements FlyBehavior \{\par
+    @Override\par
+    public void fly() \{\par
+        System.out.println("This animal is flying!");\par
+    \}\par
+\}\par
+\par
+// Concrete implementation: Non-flying animals\par
+class CannotFly implements FlyBehavior \{\par
+    @Override\par
+    public void fly() \{\par
+        System.out.println("This animal cannot fly.");\par
+    \}\par
+\}\par
+\par
+// Base class (superclass)\par
+class Animal \{\par
+    String name;\par
+    FlyBehavior flyBehavior;\par
+\par
+    public Animal(String name, FlyBehavior flyBehavior) \{\par
+        this.name = name;\par
+        this.flyBehavior = flyBehavior;\par
+    \}\par
+\par
+    public void performFly() \{\par
+        flyBehavior.fly();\par
+    \}\par
+\}\par
+\par
+// Subclass constructors with appropriate behavior strategies\par
+class Bird extends Animal \{\par
+    public Bird(String name) \{\par
+        super(name, new CanFly());\par
+    \}\par
+\}\par
+\par
+class Bat extends Animal \{\par
+    public Bat(String name) \{\par
+        super(name, new CanFly());\par
+    \}\par
+\}\par
+\par
+class Dog extends Animal \{\par
+    public Dog(String name) \{\par
+        super(name, new CannotFly());\par
+    \}\par
+\}\par
+\par
+class Cat extends Animal \{\par
+    public Cat(String name) \{\par
+        super(name, new CannotFly());\par
+    \}\par
+\}\par
+\par
+public class Main \{\par
+    public static void main(String[] args) \{\par
+        Bird bird = new Bird("Parrot");\par
+        Bat bat = new Bat("Bat");\par
+        Dog dog = new Dog("Dog");\par
+        Cat cat = new Cat("Cat");\par
+\par
+        // Bird and Bat can fly\par
+        bird.performFly();\par
+        bat.performFly();\par
+\par
+        // Dog and Cat cannot fly\par
+        dog.performFly();\par
+        cat.performFly();\par
+    \}\par
+\}\par
+onst bookList = document.querySelector("#book-list ul"); // Access the book list\par
+const addBookForm = document.querySelector("#add-book"); // Add book form\par
+const searchForm = document.querySelector("#search-books input"); // Search input\par
+\par
+// 1. HANDLE BOOK ADDITION THROUGH FORM SUBMISSION\par
+addBookForm.addEventListener("submit", (event) => \{\par
+  event.preventDefault(); // Prevent page reload\par
+\par
+  const newBookName = addBookForm.querySelector("input[type='text']").value.trim();\par
+  \par
+  if (newBookName) \{\par
+    addNewBook(newBookName); // Add the new book to the list\par
+    addBookForm.reset(); // Clear the input field\par
+  \}\par
+\});\par
+\par
+// 2. HELPER FUNCTION TO ADD A NEW BOOK\par
+function addNewBook(bookName) \{\par
+  const li = document.createElement("li"); // Create new <li> element\par
+  const bookNameSpan = document.createElement("span"); // Book name <span>\par
+  const deleteButtonSpan = document.createElement("span"); // Delete button <span>\par
+\par
+  // Set text content and class names\par
+  bookNameSpan.textContent = bookName;\par
+  bookNameSpan.className = "name";\par
+  deleteButtonSpan.textContent = "delete";\par
+  deleteButtonSpan.className = "delete";\par
+\par
+  // Append spans to the <li> element\par
+  li.appendChild(bookNameSpan);\par
+  li.appendChild(deleteButtonSpan);\par
+\par
+  // Add the new <li> to the book list\par
+  bookList.appendChild(li);\par
+\par
+  console.log(`Added: $\{bookName\}`);\par
+\}\par
+\par
+// 3. DELETE BOOK FUNCTIONALITY (EVENT DELEGATION)\par
+bookList.addEventListener("click", (event) => \{\par
+  if (event.target.className === "delete") \{\par
+    const liTag = event.target.parentNode; // Get the parent <li>\par
+    bookList.removeChild(liTag); // Remove the <li> from the list\par
+    console.log(`Deleted: $\{liTag.textContent\}`);\par
+  \}\par
+\});\par
+\par
+// 4. SEARCH BOOK FUNCTIONALITY (LIVE SEARCH)\par
+searchForm.addEventListener("input", (event) => \{\par
+  const searchTerm = event.target.value.toLowerCase();\par
+  const books = bookList.querySelectorAll("li");\par
+\par
+  books.forEach((book) => \{\par
+    const title = book.firstElementChild.textContent.toLowerCase();\par
+    book.style.display = title.includes(searchTerm) ? "block" : "none";\par
+  \});\par
+\});\par
 }
  

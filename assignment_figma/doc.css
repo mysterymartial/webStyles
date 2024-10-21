@@ -1,0 +1,323 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+
+.main_wrapper {
+    width: 95vw;
+    margin: auto;
+    /* overflow: visible; */
+}
+.header{
+    display: flex;
+    
+    align-items: center; 
+    justify-content: space-between;
+    width: 1258px;
+    height: 44px;
+    margin-top: 33px;
+    margin-left: 91px;
+    gap: 339px;
+}
+.logo{
+    display: flex;
+    width: 789px;
+    height: 33px;
+    gap: 142px;
+    align-items: center;
+
+}
+.services ul{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    gap: 38px;
+    width: 508px;
+    height: 28px;
+    align-items: center;
+    
+    
+    
+}
+
+.services ul li>a {
+    text-decoration: none;
+}
+.img{
+    display: flex;
+    align-items: center;
+}
+.help{
+    color:  #2995E2;
+    font-style: italic;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 700;
+}
+    
+
+
+
+.signUp button{
+    border-radius: 5px;
+    width: 120px;
+    height: 40px;
+    
+    
+
+}
+.main{
+    width: 1258px;
+    height: 44px;
+    margin-top: 33px;
+    margin-left: 91px;
+    gap: 339px;
+}
+.main_body{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    
+}
+.body_text p{
+    margin-top: 20px ;
+    margin-bottom: 20px;
+
+}
+.main_text{
+    font-style: Cairo;
+    font-weight: 700;
+    font-size: 40px;
+    letter-spacing: 10px;
+}
+.help2{
+   color: #2995E2;
+
+}
+.second_text{
+    font-style: Cairo;
+    font-weight: 700;
+    font-size: 40px;
+    letter-spacing: 10px;
+}
+.better_life{
+    color: #2995E2;
+}
+.service{
+    color:  #242424;
+    font-weight: bold;
+}
+.button1{
+    width: 374px;
+    height: 51px;
+    margin-top: 20px;
+    margin-left: 6px;
+    gap: 46px;
+}
+.get_started{
+    background-color:  #2995E2;
+    color: white;
+    ;
+    width: 149px;
+    height: 51px;
+}
+.wacth{
+    width: 179px;
+    height: 36px;
+    gap: 18px;
+    font-size: large;
+}
+  .fa-regular fa-circle-play {
+    
+    
+    background-color:  #D6EEFF;
+    width: 50px;
+    height: 50px;
+    gap: 1px;
+
+
+}
+.my_text2{
+    text-align:center ;
+    
+}
+.text-header2{
+    font-size: 300%;
+    font-weight: bold;
+
+}
+.img2{
+    margin-left: 800px;
+}
+.third-para{
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+
+}
+.third-para button{
+    margin-top: 50px;
+    border-radius: 5px;
+    width: 120px;
+    height: 40px;
+    background-color: #2995E2;
+    color: white;
+    
+}
+.third-para h6{
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+.third-para p{
+    font-size: 20px;
+}
+ /* .third-para img{
+    
+     width: 500px; 
+     height: 500x; 
+     margin-left: 150px;
+}  */
+.third-para h6{
+    margin-top: 70px;
+}
+
+.fourth-para{
+    display: flex;
+    justify-content: space-between;
+}
+.inner-para4{
+    margin-top: 200px;
+} 
+.inner-para4 h6{
+    font-size: 25px;
+    margin-bottom: 20px;
+
+
+}
+.inner-button4{
+    margin-top: 30px;
+    
+    
+}
+.inner-button4 button{
+    border-radius: 5px;
+    width: 120px;
+    height: 40px;
+    background-color: #2995E2;
+    color: white;
+}
+.inner-para4 span{
+    font-size: 20px;
+}
+.fifth-para{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.inner-text5{
+    margin-top: 150px;
+}
+.inner-text5 h6{
+    font-size: 25px;
+    margin-bottom: 20px;
+
+}
+.inner-text5 span{
+    font-size: 20px;
+}
+.inner-button5{
+    margin-top: 30px;
+}
+.inner-button5 button{
+    border-radius: 5px;
+    width: 120px;
+    height: 40px;
+    background-color: #2995E2;
+    color: white;
+}
+.sixth-para{
+    margin: 50px;
+    background-color: #2995E2;
+    display: flex;
+    justify-content: space-between;
+    height: 380px;
+}
+.inner-text6{
+    margin-top: 200px;
+    margin-right: 200px;
+}
+.inner-text6 p{
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+.inner-button6 button{
+    border-radius: 5px;
+    width: 120px;
+    height: 40px;
+    background-color:white;
+    color: black;
+
+
+}
+.inner-img6{
+    margin-top: 160px;
+    
+}
+.inner-img6 img{
+    margin-right: 100px;
+}
+
+/*.main_text{
+    font-size: large;
+    font-size: 40px;
+    margin-top: 50px;
+    letter-spacing: 1px;
+    word-spacing: 5px;
+    
+
+    }
+
+.help{
+    color: rgb(53, 164, 201);
+}
+.second_text{
+    margin-top: 10px;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+.better_life{
+    color: rgb(103, 186, 214);
+}
+.main{
+    display: flex;
+    justify-content: space-between;
+    
+    
+    
+}
+.first_image{
+    width: 577;
+    height: 467;
+}
+.get_started{
+    background-color: rgb(33, 183, 238);
+    border-radius: 5px;
+    color: white;
+    
+}
+.button1{
+    gap: 10px;
+    margin-top: 20px;
+    border: solid;
+    width: fit-content;
+    
+}
+.wacth{
+    margin-left: 90px;
+    border: none;
+}
+
+     */

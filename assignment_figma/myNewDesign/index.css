@@ -1,0 +1,17 @@
+# {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+.my_title{
+    
+}
+.my_form input{
+    display: block;
+    background-color: white;
+    width: 300px;
+}
+.my_form button{
+    background-color: purple;
+    display: inline;
+}
