@@ -1,0 +1,122 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+main.wrapper{
+    background-color:   #EBF2FF;
+    ;
+    margin: auto;
+    width: 1470px;
+    height: 710px;
+}
+.header{
+    background-color: pink;
+    display: flex;
+    justify-content: space-between;
+}
+.logo{
+    display: flex;
+    align-items: center;
+    
+    
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.services ul {
+    align-items: center;
+    display: flex;
+    justify-content: space-between ;
+    gap: 20px;
+    list-style: none;
+}
+ .services li{
+    gap: 10px;
+    justify-content: space-between;
+    list-style: none;
+    cursor: pointer;
+    transition:color 0.3s ease;
+}
+.services:hover{
+    color: #EBF2FF;
+}
+.contact button{
+    width: 134px;
+    height: 48px;
+    border-radius: 24px;
+    background-color:  #2374EE;
+    color: #FFFFFF;
+
+    
+}
+.main-body1{
+    width: 373px;
+    height: 210px;
+    margin-top: 189px;
+    margin-left: 110px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.body1 h2{
+    font-style: popins;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 70.4px;
+    letter-spacing: -1%;
+}
+.body1 .Education{
+    color: #2374EE;
+}
+.body1-text{
+    width: 441px;
+    height: 78px;
+    margin-top: 80px;
+    margin-left: 10px;
+}
+.body1-text span{
+    font-style: popins;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26.1px;
+    letter-spacing: -0.5%;
+    color: #9EA3AE;
+    ;
+}
+.body1-button{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 70px;
+    align-items: center;
+}
+.try-free-trial{
+    display: flex;
+    
+    
+
+}
+.play-icon{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.try-free-trial button{
+    width: 180px;
+    height: 58px;
+    background-color:  #2374EE;
+    border-radius: 37px;
+    color:#FFFFFF;
+    
+    
+}
+.body-image img{
+    margin-left: 500px;
+    
+
+}
+.body-image{
+    margin-bottom: 600px;
+}

@@ -269,7 +269,179 @@
 .inner-img6 img{
     margin-right: 100px;
 }
+.form{
+    border-color:#2995E2 ;
+    border-width: 2px;
+    border-style: solid;
+    margin-top: 200px;
+    gap: 10px;
+    height: 600px;
+    width: 1179px;
+    
 
+}
+.form-header{
+    margin-top: 200px;
+    border-width: 1px;
+    border: 1px;
+    border-style: none;
+    padding-left: 80px;
+}
+.myInput-form1{
+    display: flex;
+    margin-top: 20px;
+    gap: 20px;
+    padding-left: 80px;
+}
+.myInput-form2{
+    display: flex;
+    margin-top: 20px;
+    gap: 20px;
+    padding-left: 80px;
+}
+.form-button{
+    margin-top: 20px;
+}
+.line1 input{
+    width: 500px;
+    height: 50px;
+
+}
+.line2 input{
+    width: 500px;
+    height: 50px
+
+}
+.line3 input{
+    width: 500px;
+    height: 50px
+
+}
+.line4 input{
+    width: 500px;
+    height: 50px
+}
+.form-button button{
+    margin-left: 350px;
+    background-color: #2995E2;
+    color: #D6EEFF;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+.form-header p{
+    font-size: 30px;
+}
+.form-header span{
+    font-size: 20px;
+}
+#house{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 70px;
+    gap: 10px;
+    
+}
+
+.first-side1{
+    display: flex;
+    align-items: center;
+}
+.first-side2{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+#house > div > *:not(:last-child) {
+    margin-bottom: 15px;
+}
+.last{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+}
+.Cookies span{
+    margin-left: 10px;
+}
+button:hover{
+    cursor: pointer;
+}
+button:active{
+    background-color: #D6EEFF;
+}
+.service a{
+    color: #242424;
+}
+.donate a{
+    color: black;
+}
+.who-we-are a{
+    color: black;
+}
+.join-us a{
+    color: black;
+}
+.contact-us a{
+    color: black;
+}
+.blog a{
+    color: black;
+}
+
+
+
+/* #house > div > * {
+    margin-bottom: 15px; /* Adds 15px space between all tags inside each div */
+ */
+
+/* .form-header p{
+    margin-top: 200px;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    
+}
+.myInput-form{
+    border-radius: 10px;
+    border-color: #2995E2;
+    border: solid;
+}
+.form-header span{
+    margin-top: 30px;
+    font-size: 20px;
+}
+.form1{
+    display: flex;
+}
+.form2{
+    display: flex;
+    margin-top: 20px;
+    
+} */
+/* .form input{ */
+
+    
+    
+    border-radius: 10px;
+    background-color: white;
+    border-color: #2995E2;
+    margin-top: 250px;
+    height: 300px;
+}
+.form2 input{
+    padding-left: 40px;
+
+}
+.name{
+    padding-left:80px ;
+}
 /*.main_text{
     font-size: large;
     font-size: 40px;
