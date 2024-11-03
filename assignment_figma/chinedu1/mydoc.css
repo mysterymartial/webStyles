@@ -5,7 +5,9 @@
 }
 .main-wrapper{
     
-    width: 90vw;
+    width: 100vw;
+    margin: auto;
+    background-image: url(../chinedu1/joe-woods-4Zaq5xY5M_c-unsplash.jpg);
     
 }
 .main-container{
@@ -33,7 +35,7 @@
     list-style: none;
 }
 h2{
-    background-color: pink;
+    background-color:grey;
     border-radius: 5px;
     padding: 10px;
 }
@@ -53,21 +55,40 @@ ul:hover{
     margin-left: 250px;
     
 }
-.images{
-    display: flex;
+.movie{
+    
     margin-left: 180px;
-    gap: 5px;
+    
+    
     
 
 }
-.images img{
-    width: 200px;
-    height: 300px;
+.movie img{
+    width: 400px;
+    height: 500px;
     margin-top: 20px;
     margin-top: 10px;
+
+    
     
 
 }
 .title-rating{
     display: flex;
+}
+.movie-main-container{
+    display: flex;
+    /* justify-content: ; */
+
+}
+.this-text p{
+    display: block;
+}
+.movie-main-container{
+    display: grid;
+    /* grid-template-columns: auto auto auto; */
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.navBar{
+    background-color: grey;
 }

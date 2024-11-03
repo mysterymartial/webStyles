@@ -4,14 +4,14 @@
     box-sizing: border-box;
 }
 main.wrapper{
-    background-color:   #EBF2FF;
+    background-color:linear-gradient(198.56deg, #F3F8FF 9.49%, rgba(244, 247, 253, 0) 85.99%);
+    ;
     ;
     margin: auto;
     width: 1470px;
     height: 710px;
 }
 .header{
-    background-color: pink;
     display: flex;
     justify-content: space-between;
 }
@@ -113,10 +113,28 @@ main.wrapper{
     
 }
 .body-image img{
-    margin-left: 500px;
+    position:absolute;
+    left: 800px;
+    top: -385px;
+    width: 800px;
+    margin-left: 150px;
     
 
 }
 .body-image{
+    position: relative;
     margin-bottom: 600px;
 }
+/* .body1{
+    display: flex;
+    align-items: flex-start;
+} */
+ .second-body{
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ }
+ .second-img img{
+    margin-top: 10px;
+ }
