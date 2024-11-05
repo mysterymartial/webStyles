@@ -1,44 +1,77 @@
-let displayValue ="0";
-function appendNumber(number){
-    if(displayValue == '0') displayValue =''
+let displayValue = ''; 
+
+
+function updateDisplay() {
+    const display = document.getElementById('display');
+    display.value = displayValue;
+}
+
+function clearDisplay() {
+    displayValue = displayValue.slice(0, -1);
+    updateDisplay();
+}
+
+
+function allClear() {
+    displayValue = '';
+    updateDisplay();
+
+}
+
+
+function toggleSign() {
+    if(displayValue){
+        if(displayValue.startsWith("-")){
+            displayValue = displayValue.substring(1);
+        }else{
+            displayValue = "-" + displayValue;
+        }
+    }else{
+        displayValue = "-"
+    }
+    updateDisplay();
+}
+function appendNumber(number) {
     displayValue += number;
     updateDisplay();
 }
-function appendOperator(operator){
-    displayValue += ' ' + operator + ' ';
-    updateDisplay(); 
-}
-function appendDot(){
-    if(!displayValue.includes('.')){
-        displayValue += '.';
-        updateDisplay();
-    }
-}
-function clearDisplay(){
-    if(displayValue.length > 1){
-        displayValue = displayValue.slice(0,-1);
-    }else{
-        displayValue = "0";
-    }
-    updateDisplay();
-        
 
+
+function appendOperator(operator) {
+   if(operator === '-' && displayValue === ''){
+        displayValue = '-'
+   } else if(displayValue && !isNaN(displayValue[displayValue.length-1])){
+        displayValue += operator
+   }
+   updateDisplay();
 }
-function allClear(){
-    displayValue = '0';
-    updateDisplay();
+
+function appendDot() {
+    
+   if(!displayValue.includes('.') ||/[+\-*/]/.test(display[displayValue.length-1])){
+        displayValue += '.'
+        updateDisplay();
+   }
+    
 }
-function toggleSign(){
-    if(displayValue.includes(' ')){
-        let parts = displayValue.split(' ');
-        let lastPart = parts.pop();
-        parts.push(lastPart.startsWith('-') ? lastPart.slice(1) : '-' + lastPart);
-        displayValue = parts.join(' ');
-}else{
-    displayValue = displayValue.startsWith('-') ? displayValue.slice(1) : '-' + displayValue;
+
+
+function calculatePercentage() {
+    if(displayValue){
+        displayValue = (parseFloat(displayValue)/100).toString()
+        updateDisplay();
+        
+    }
 }
-updateDisplay();
-}
-function updateDisplay(){
-    document.getElementById('display').value = displayValue;
+
+
+function calculateResult() {
+    try{
+        displayValue = eval(displayValue).toString();
+        updateDisplay();
+    } catch (error){
+        displayValue = 'Error'
+        updateDisplay();
+        displayValue = '';
+    }
 }
